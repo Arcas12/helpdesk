@@ -46,12 +46,6 @@ public class AuthController : ControllerBase
 		return Ok(new { success = true, data = result });
 	}
 
-	// SOLO PARA DESARROLLO — borra esto antes de entregar
-	[HttpGet("generate-hash/{password}")]
-	public IActionResult GenerateHash(string password)
-	{
-		var hash = BCrypt.Net.BCrypt.HashPassword(password, workFactor: 11);
-		return Ok(new { password, hash });
-	}
+	
 
 }
