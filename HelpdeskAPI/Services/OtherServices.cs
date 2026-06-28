@@ -5,10 +5,8 @@ using HelpdeskAPI.Services.Interfaces;
 
 namespace HelpdeskAPI.Services;
 
-// ══════════════════════════════════════════════════════════════
 // SERVICIO DE USUARIOS
 // Solo el Administrador llega hasta aquí (el controlador lo valida)
-// ══════════════════════════════════════════════════════════════
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepo;
@@ -76,9 +74,8 @@ public class UserService : IUserService
     };
 }
 
-// ══════════════════════════════════════════════════════════════
 // SERVICIO DE CATEGORÍAS
-// ══════════════════════════════════════════════════════════════
+
 public class CategoryService : ICategoryService
 {
     private readonly ICategoryRepository _categoryRepo;
@@ -94,10 +91,9 @@ public class CategoryService : ICategoryService
     }
 }
 
-// ══════════════════════════════════════════════════════════════
+
 // SERVICIO DE DASHBOARD
 // Delega al repositorio y devuelve el DTO listo para el frontend
-// ══════════════════════════════════════════════════════════════
 public class DashboardService : IDashboardService
 {
     private readonly ITicketRepository _ticketRepo;

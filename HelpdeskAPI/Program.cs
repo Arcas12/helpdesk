@@ -11,18 +11,14 @@ using HelpdeskAPI.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ══════════════════════════════════════════════════════════════
 // 1. BASE DE DATOS
-// ══════════════════════════════════════════════════════════════
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
 
-// ══════════════════════════════════════════════════════════════
 // 2. AUTENTICACIÓN JWT
-// ══════════════════════════════════════════════════════════════
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var secretKey = jwtSettings["SecretKey"]!;
 
@@ -50,9 +46,9 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-// ══════════════════════════════════════════════════════════════
+
 // 3. INYECCIÓN DE DEPENDENCIAS
-// ══════════════════════════════════════════════════════════════
+
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
@@ -63,9 +59,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITicketRepository, TicketRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
-// ══════════════════════════════════════════════════════════════
 // 4. CORS
-// ══════════════════════════════════════════════════════════════
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact", policy =>
@@ -75,17 +69,13 @@ builder.Services.AddCors(options =>
     );
 });
 
-// ══════════════════════════════════════════════════════════════
 // 5. SWAGGER — versión simplificada compatible con cualquier versión
-// ══════════════════════════════════════════════════════════════
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
-// ══════════════════════════════════════════════════════════════
 // CONSTRUCCIÓN DE LA APP
-// ══════════════════════════════════════════════════════════════
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

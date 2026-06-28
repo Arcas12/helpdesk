@@ -152,7 +152,6 @@ public class TicketService : ITicketService
 
     /// <summary>
     /// Valida que el usuario autenticado tiene acceso a este ticket.
-    /// Esta validación ocurre en el BACKEND — nunca confíes solo en el frontend.
     /// </summary>
     private static void ValidateTicketAccess(Ticket ticket, int userId, string role)
     {

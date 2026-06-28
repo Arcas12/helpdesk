@@ -3,11 +3,9 @@ using HelpdeskAPI.DTOs;
 
 namespace HelpdeskAPI.Repositories.Interfaces;
 
-// ══════════════════════════════════════════════════════════════
 // PRINCIPIO SOLID: Interface Segregation (I)
 // Cada repositorio tiene su propia interfaz con solo los métodos
 // que necesita. No hay una interfaz gigante para todo.
-// ══════════════════════════════════════════════════════════════
 
 public interface IUserRepository
 {

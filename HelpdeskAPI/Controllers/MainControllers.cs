@@ -6,9 +6,9 @@ using HelpdeskAPI.Services.Interfaces;
 
 namespace HelpdeskAPI.Controllers;
 
-// ══════════════════════════════════════════════════════════════
+
 // HELPER: Extensión para leer los claims del token JWT
-// ══════════════════════════════════════════════════════════════
+
 public static class ClaimsExtensions
 {
     public static int GetUserId(this ClaimsPrincipal user)
@@ -21,10 +21,8 @@ public static class ClaimsExtensions
             ?? throw new UnauthorizedAccessException("Token sin rol.");
 }
 
-// ══════════════════════════════════════════════════════════════
 // CONTROLADOR DE TICKETS
 // [Authorize] = requiere token JWT válido en TODOS los endpoints
-// ══════════════════════════════════════════════════════════════
 [ApiController]
 [Route("api/[controller]")]
 [Authorize] // 401 si no hay token
@@ -103,10 +101,8 @@ public class TicketsController : ControllerBase
     }
 }
 
-// ══════════════════════════════════════════════════════════════
 // CONTROLADOR DE USUARIOS
 // Solo el Administrador puede acceder
-// ══════════════════════════════════════════════════════════════
 [ApiController]
 [Route("api/[controller]")]
 [Authorize(Roles = "Administrator")] // 403 para todos los demás roles
@@ -149,10 +145,8 @@ public class UsersController : ControllerBase
     }
 }
 
-// ══════════════════════════════════════════════════════════════
 // CONTROLADOR DE CATEGORÍAS
 // Cualquier usuario autenticado puede ver las categorías
-// ══════════════════════════════════════════════════════════════
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
@@ -173,10 +167,8 @@ public class CategoriesController : ControllerBase
     }
 }
 
-// ══════════════════════════════════════════════════════════════
 // CONTROLADOR DE DASHBOARD
 // Cada rol ve sus propias métricas
-// ══════════════════════════════════════════════════════════════
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
