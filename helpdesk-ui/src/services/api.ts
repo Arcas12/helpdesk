@@ -109,7 +109,13 @@ export const userService = {
   update: async (id: number, data: UpdateUserRequest): Promise<User> => {
     const response = await api.put<ApiResponse<User>>(`/users/${id}`, data);
     return response.data.data;
-  }
+  },
+
+  // Devuelve solo los usuarios con rol "Agent" y activos
+  getAgents: async (): Promise<User[]> => {
+    const response = await api.get<ApiResponse<User[]>>('/users');
+    return response.data.data.filter(u => u.role === 'Agent' && u.isActive);
+  },
 };
 
 // ══════════════════════════════════════════════════════════════
