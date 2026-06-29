@@ -175,7 +175,7 @@ Para apuntar a otra instancia de SQL Server, cambiar `localhost\\SQLEXPRESS` por
 | Pruebas unitarias | Tiempo limitado a 3 días; se priorizó funcionalidad completa |
 | Pipeline CI/CD | No alcanzó el tiempo disponible |
 | Exportación a PDF | Se implementó Excel; PDF requería librería adicional |
-| Auditoría de cambios | No implementada por tiempo; se declara explícitamente |
+
 
 ---
 
